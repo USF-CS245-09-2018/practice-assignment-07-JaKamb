@@ -14,19 +14,18 @@ public class ArrayList implements List{
 	}
 
 	public void add(Object obj){
-		add(0, obj);
+		add(size+1, obj);
 	}
 	public void add(int pos, Object obj){
 		if(pos < 0){
 			throw new IllegalArgumentException("Cannot use negative indecies");
 		}
-		else if(pos >= length() || size == length()){
+		else if(pos > length() || size() == length()-1){
 			doubleLen();
-			arr[pos] = obj;
-			size++;
+			add(pos, obj);
 		}
-		else if(pos == size+1){
-			arr[pos] = obj;
+		else if(size == 0){
+			arr[0] = obj;
 			size++;
 		}
 		else{
@@ -34,6 +33,7 @@ public class ArrayList implements List{
 			arr[pos] = obj;
 			size++;
 		}
+		
 	}
 	public Object get(int pos){
 		return arr[pos];
